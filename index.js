@@ -42,7 +42,7 @@ app.get('/calculate-tax', (req, res) => {
 });
 
 function checkdeliverytime(shippingMethod, distance) {
-  if (shippingMethod === 'Express') {
+  if (shippingMethod === 'express') {
     return distance / 100;
   }
   return distance / 50;
@@ -56,7 +56,7 @@ app.get('/estimate-delivery', (req, res) => {
 });
 
 app.get('/shipping-cost', (req, res) => {
-  let weight = distance(req.query.weight);
+  let weight = parseFloat(req.query.weight);
   let distance = parseFloat(req.query.distance);
   let shippingCost = weight * distance * 0.1;
   res.send(String(shippingCost));
